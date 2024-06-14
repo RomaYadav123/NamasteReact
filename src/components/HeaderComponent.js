@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import greenTick from "../images/flat-round-check-mark-green-260nw-652023034.webp";
 import redDot from "../images/bigRedDot.webp";
+import foodApp from "../images/food_app2.webp";
+
 const HeaderComponent = () => {
   const [btnName, setBtnName] = useState("login");
 
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header-custom">
+    <div className="flex justify-between shadow-lg ">
       <div className="logo-container">
-        <img alt="logo" src={LOGO_URL} className="logo" />
+        <img alt="logo" src={foodApp} className="w-28 rounded-full" />
       </div>
 
-      <div className="nav-items">
-        <ul>
-          <li>
-            
+      <div className="flex items-center bg-pink-100 sm:bg-yellow-100 lg:bg-orange-100 ">
+        <ul className="flex p-4 m-4">
+          <li className=" flex px-4">
             Online Status:
             {onlineStatus ? (
               <img src={greenTick} style={{ height: "20px", width: "20px" }} />
@@ -26,21 +27,25 @@ const HeaderComponent = () => {
             )}
           </li>
 
-          <li>
+          <li className="px-4">
             <Link to="/">Home </Link>
           </li>
-          <li>
+
+          <li className="px-4">
             <Link to="/about">About Us </Link>
           </li>
-          <li>
+
+          <li className="px-4">
             <Link to="/contact">Contact Us </Link>
           </li>
-          <li>
+
+          <li className="px-4">
             <Link to="/grocery">Grocery </Link>
           </li>
-          <li>Cart</li>
+
+          <li className="px-4">Cart</li>
           <button
-            className="login"
+            className="px-4"
             onClick={() => {
               btnName === "logout" ? setBtnName("logout") : setBtnName("login");
             }}

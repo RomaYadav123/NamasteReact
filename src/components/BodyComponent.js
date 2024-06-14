@@ -48,17 +48,17 @@ const BodyComponent = () => {
     <Shimmer />
   ) : (
     <div className="body-custom">
-      <div className="filter">
-        <div className="search">
+      <div className="flex items-center">
+        <div className=" m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="search-box border border-solid border-black"
             value={inputText}
             onChange={(e) => {
               setInputText(e.target.value);
             }}
           />
-          <button
+          <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               const filteredRestraunts =
                 restrauList[4].gridWidget.gridElements.infoWithStyle.restaurants.filter(
@@ -74,8 +74,8 @@ const BodyComponent = () => {
             search
           </button>
         </div>
-        <Button
-          className="filter-btn"
+        <button
+          className=" px-4 py-2 bg-gray-100 rounded-lg"
           onClick={() => {
             const filteredRestaurants =
               restrauList[4].gridWidget.gridElements.infoWithStyle.restaurants.filter(
@@ -86,9 +86,9 @@ const BodyComponent = () => {
           }}
         >
           Top Rated Restrauants
-        </Button>
+        </button>
       </div>
-      <div className="restrauant-container">
+      <div className=" flex flex-wrap">
         {/* resData is an object that react created combining all the props together into a single object, from which we want name, avgRatings, cloudinaryImageId, etc which is inside the main restrauList which is array of objects */}
         {restrauList[4].gridWidget.gridElements.infoWithStyle.restaurants.map(
           (restraunt) => (

@@ -5,16 +5,16 @@ const RestrauantCard = (props) => {
 
   console.log("image id", resData);
   return (
-    <div className="res-cards">
+    <div className="m-4 p-4 w-[250px] h-[90%] rounded-lg bg-gray-100 hover:bg-gray-200" >
       <img
         alt="card-img"
-        className="street-platter"
+        className="rounded-lg h-26 w-[100%]"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/" +
           cloudinaryImageId
         }
       />
-      <h3>{name}</h3>
+      <h3 className="font-bold py-2 text-lg">{name}</h3>
       <h4>{cuisines.join(",")}</h4>
       <h4>{avgRating}</h4>
     </div>

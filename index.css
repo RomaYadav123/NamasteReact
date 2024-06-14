@@ -1,4 +1,4 @@
-.heading {
+/* .heading {
   color: yellowgreen;
 }
 
@@ -10,7 +10,6 @@
   width: 200px;
   height: 200px;
 
-  /* background-color: blue; */
 }
 
 .header-custom {
@@ -53,13 +52,11 @@
 
 .res-cards {
   background-color: #f0f0f0;
-  /* border: 2px solid yellow; */
 }
 
 .street-platter {
   width: 100%;
 
-  /* height: 100%; */
 }
 
 .filter-btn {
@@ -91,11 +88,14 @@
 .res-menu-styling {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between;
-  align-items: center; */
+
 }
 
 .user-card {
   padding: 10px;
   border: 1px solid black;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
