@@ -5,7 +5,7 @@ const RestrauantCard = (props) => {
 
   console.log("image id", resData);
   return (
-    <div className="m-4 p-4 w-[250px] h-[90%] rounded-lg bg-gray-100 hover:bg-gray-200" >
+    <div className="m-4 p-4 w-[250px] h-[90%] rounded-lg bg-gray-100 hover:bg-gray-200">
       <img
         alt="card-img"
         className="rounded-lg h-26 w-[100%]"
@@ -18,8 +18,20 @@ const RestrauantCard = (props) => {
       <h4>{cuisines.join(",")}</h4>
       <h4>{avgRating}</h4>
     </div>
-  
   );
+};
+
+// creating a HOC that takes a component as an input & return us an enhanced component //
+
+export const withPromotionLabel = (RestrauantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted </label>
+        <RestrauantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestrauantCard;

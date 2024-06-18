@@ -1,5 +1,5 @@
 import restrauList from "../utils/mockData";
-import RestrauantCard from "./RestrauantCard";
+import RestrauantCard, { withPromotionLabel } from "./RestrauantCard";
 import Button from "react-bootstrap/Button";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
@@ -10,6 +10,9 @@ const BodyComponent = () => {
   const [restraLists, setRestrauLists] = useState(restrauList);
   const [filteredListOfRestraunts, setFilteredListOfRestraunts] = useState([]);
 
+  const RestrauantCardPromoted = withPromotionLabel(RestrauantCard);
+
+  console.log("Body Rendrered", restraLists);
   useEffect(() => {
     fetchData();
   }, []);
@@ -58,7 +61,8 @@ const BodyComponent = () => {
               setInputText(e.target.value);
             }}
           />
-          <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+          <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               const filteredRestraunts =
                 restrauList[4].gridWidget.gridElements.infoWithStyle.restaurants.filter(
@@ -93,7 +97,11 @@ const BodyComponent = () => {
         {restrauList[4].gridWidget.gridElements.infoWithStyle.restaurants.map(
           (restraunt) => (
             <Link to={"/restrauants/" + restraunt.info.id}>
-              <RestrauantCard resData={restraunt} />{" "}
+              {restraunt.info.promoted ? (
+                <RestrauantCardPromoted resData={restraunt} />
+              ) : (
+                <RestrauantCard resData={restraunt} />
+              )}
             </Link>
           )
         )}

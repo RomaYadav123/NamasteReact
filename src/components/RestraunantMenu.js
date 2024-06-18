@@ -1,15 +1,30 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import {useParams} from "react-router-dom";
-import {MENU_URL} from "../utils/constants";
+import { useParams } from "react-router-dom";
+import { MENU_URL } from "../utils/constants";
 import useRestrauantMenu from "../utils/useRestrauantMenu";
+import RestrauantCategory from "./RestrauantCategory";
 
 const RestrauantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
 
-  const {resId} = useParams();
-  
+  const { resId } = useParams();
+
   const resInfo = useRestrauantMenu(resId);
+
+  console.log(
+    "checking for the next ui design",
+    resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+  );
+
+  const categories =
+    resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  console.log(categories);
 
   // useEffect(() => {
   //   fetchMenu();
@@ -39,60 +54,26 @@ const RestrauantMenu = () => {
   //   console.log("logging here the emnu item ---> ", item);
 
   return (
-    <div className="menu">
-      <h1>{resInfo?.cards[2]?.card?.card?.info?.name} </h1>
-      <span className="res-menu-styling">
-        <h3> {resInfo?.cards[2]?.card?.card?.info?.cuisines.join(", ")} - </h3>
-        <h3 style={{ marginLeft: "4px" }}>
+    <div className=" flex flex-col text-center">
+      <h1 className="font-bold my-10 text-2xl">
+        {resInfo?.cards[2]?.card?.card?.info?.name}
+      </h1>
+
+      <span className="flex  items-center">
+        <h3 className="w-1/2 text-end font-bold text-lg ">
+          {resInfo?.cards[2]?.card?.card?.info?.cuisines.join(", ")} -{" "}
+        </h3>
+        <h3
+          className="w-1/2 text-start font-bold text-lg"
+          style={{ marginLeft: "4px" }}
+        >
           {resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}{" "}
         </h3>
       </span>
-      <h3>
-        {
-          resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-            .itemCards[1].card.info.name
-        }
-      </h3>
-      <h2>Menu </h2>
 
-      <ul>
-        {resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map(
-          (item) => (
-            <li key={item.card.info.id}>
-             
-              {item.card.info.name} - {"Rs."} {item.card.info.price/100}
-            </li>
-          )
-        )}
-
-        <li>
-        
-          {
-            resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-              .itemCards[1].card.info.name
-          }
-        </li>
-        <li>
-          
-          {
-            resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-              .itemCards[2].card.info.name
-          }
-        </li>
-        <li>
-         
-          {
-            resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-              .itemCards[3].card.info.name
-          }
-        </li>
-        <li>
-          {
-            resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-              .itemCards[4].card.info.name
-          }
-        </li>
-      </ul>
+      {categories.map((category) => (
+        <RestrauantCategory data={category?.card?.card} />
+      ))}
     </div>
   );
 };
