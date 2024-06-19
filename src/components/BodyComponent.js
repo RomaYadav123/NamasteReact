@@ -2,9 +2,10 @@ import restrauList from "../utils/mockData";
 import RestrauantCard, { withPromotionLabel } from "./RestrauantCard";
 import Button from "react-bootstrap/Button";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const BodyComponent = () => {
   const [restraLists, setRestrauLists] = useState(restrauList);
@@ -13,6 +14,7 @@ const BodyComponent = () => {
   const RestrauantCardPromoted = withPromotionLabel(RestrauantCard);
 
   console.log("Body Rendrered", restraLists);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -39,6 +41,8 @@ const BodyComponent = () => {
   const [inputText, setInputText] = useState("");
 
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser, setUserInfo } = useContext(userContext);
 
   if (onlineStatus === false)
     return (
@@ -91,6 +95,13 @@ const BodyComponent = () => {
         >
           Top Rated Restrauants
         </button>
+
+        <label className="ml-6">Username </label>
+        <input
+          className="p-2 search-box border border-solid border-black ml-6"
+          value={loggedInUser}
+          onChange={(e) => setUserInfo(e.target.value)}
+        />
       </div>
       <div className=" flex flex-wrap">
         {/* resData is an object that react created combining all the props together into a single object, from which we want name, avgRatings, cloudinaryImageId, etc which is inside the main restrauList which is array of objects */}

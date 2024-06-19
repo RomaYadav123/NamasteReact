@@ -8,9 +8,13 @@ import RestrauantCategory from "./RestrauantCategory";
 const RestrauantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
 
+  const [showIndex, setShowIndex] = useState(0);
+
   const { resId } = useParams();
 
   const resInfo = useRestrauantMenu(resId);
+
+
 
   console.log(
     "checking for the next ui design",
@@ -61,18 +65,23 @@ const RestrauantMenu = () => {
 
       <span className="flex  items-center">
         <h3 className="w-1/2 text-end font-bold text-lg ">
-          {resInfo?.cards[2]?.card?.card?.info?.cuisines.join(", ")} -{" "}
+          {resInfo?.cards[2]?.card?.card?.info?.cuisines.join(", ")} -
         </h3>
         <h3
           className="w-1/2 text-start font-bold text-lg"
           style={{ marginLeft: "4px" }}
         >
-          {resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}{" "}
+          {resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage}
         </h3>
       </span>
 
-      {categories.map((category) => (
-        <RestrauantCategory data={category?.card?.card} />
+      {categories.map((category, index) => (
+        <RestrauantCategory
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={()=> setShowIndex(index)}
+        />
       ))}
     </div>
   );

@@ -1,13 +1,16 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import greenTick from "../images/flat-round-check-mark-green-260nw-652023034.webp";
 import redDot from "../images/bigRedDot.webp";
 import foodApp from "../images/food_app2.webp";
+import userContext from "../utils/userContext";
 
 const HeaderComponent = () => {
   const [btnName, setBtnName] = useState("login");
+
+  const { loggedInUser } = useContext(userContext);
 
   const onlineStatus = useOnlineStatus();
   return (
@@ -52,6 +55,7 @@ const HeaderComponent = () => {
           >
             {btnName}
           </button>
+          <li className="px-4 font-bold"> {loggedInUser} </li>
         </ul>
       </div>
     </div>
