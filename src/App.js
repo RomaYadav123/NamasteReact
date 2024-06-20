@@ -10,6 +10,9 @@ import RestrauantMenu from "./components/RestraunantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import UserContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // import Grocery from "./components/Grocery";
 // import yummyFoodImg from "./public/YummFood";
 // import streetFoodImg from "./Images/StreetFood";
@@ -45,14 +48,16 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userInfo,  setUserInfo}}>
-      <div className="app">
-        {/* this is called component composition as one comeponent is inside other */}
-        <HeaderComponent />
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userInfo, setUserInfo }}>
+        <div className="app">
+          {/* this is called component composition as one comeponent is inside other */}
+          <HeaderComponent />
 
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -84,6 +89,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restrauants/:resId",
         element: <RestrauantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

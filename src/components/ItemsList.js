@@ -1,8 +1,17 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { CDN_URL } from "../utils/constants";
 
 const ItemsList = ({ items }) => {
   console.log("checking the items list over here ---> ", items);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -27,7 +36,10 @@ const ItemsList = ({ items }) => {
                 src={CDN_URL + item?.card?.info?.imageId}
               />
 
-              <button className="p-2 items-center rounded-lg  bg-black text-white shadow-lg">
+              <button
+                className="p-2 items-center rounded-lg  bg-black text-white shadow-lg"
+                onClick={() => handleAddItem(item)}
+              >
                 Add +
               </button>
             </div>

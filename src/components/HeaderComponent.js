@@ -6,6 +6,8 @@ import greenTick from "../images/flat-round-check-mark-green-260nw-652023034.web
 import redDot from "../images/bigRedDot.webp";
 import foodApp from "../images/food_app2.webp";
 import userContext from "../utils/userContext";
+import { FaCartPlus } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const HeaderComponent = () => {
   const [btnName, setBtnName] = useState("login");
@@ -13,6 +15,10 @@ const HeaderComponent = () => {
   const { loggedInUser } = useContext(userContext);
 
   const onlineStatus = useOnlineStatus();
+
+  //Subscribing to the store using Selector//
+  const cartItem = useSelector((store) => store.cart.item);
+
   return (
     <div className="flex justify-between shadow-lg ">
       <div className="logo-container">
@@ -46,7 +52,11 @@ const HeaderComponent = () => {
             <Link to="/grocery">Grocery </Link>
           </li>
 
-          <li className="px-4">Cart</li>
+          <li className="px-4 font-bold ">
+            <Link to="/cart">
+              <FaCartPlus /> ({cartItem.length} Items)
+            </Link>
+          </li>
           <button
             className="px-4"
             onClick={() => {
