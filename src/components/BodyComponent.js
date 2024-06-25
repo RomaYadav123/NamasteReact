@@ -13,8 +13,6 @@ const BodyComponent = () => {
 
   const RestrauantCardPromoted = withPromotionLabel(RestrauantCard);
 
-  console.log("Body Rendrered", restraLists);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -28,6 +26,12 @@ const BodyComponent = () => {
 
     console.log(
       json.data.cards[3].card.card.gridElements.infoWithStyle.restraunts
+    );
+
+    console.log(
+      "is my data coming",
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants[0]?.info?.name
     );
 
     setRestrauLists(

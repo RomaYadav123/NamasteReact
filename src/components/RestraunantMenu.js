@@ -14,8 +14,6 @@ const RestrauantMenu = () => {
 
   const resInfo = useRestrauantMenu(resId);
 
-
-
   console.log(
     "checking for the next ui design",
     resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
@@ -80,7 +78,7 @@ const RestrauantMenu = () => {
           key={category?.card?.card?.title}
           data={category?.card?.card}
           showItems={index === showIndex ? true : false}
-          setShowIndex={()=> setShowIndex(index)}
+          setShowIndex={() => setShowIndex(index)}
         />
       ))}
     </div>

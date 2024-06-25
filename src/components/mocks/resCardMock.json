@@ -1,0 +1,85 @@
+{
+  "info": {
+    "id": "11748",
+    "name": "Subway",
+    "cloudinaryImageId": "63178e3e64d503a479f2a2048a474552",
+    "locality": "New Colony",
+    "areaName": "Sector 7",
+    "costForTwo": "₹350 for two",
+    "cuisines": ["Salads", "Snacks", "Desserts", "Beverages"],
+    "avgRating": 4.2,
+    "parentId": "2",
+    "avgRatingString": "4.2",
+    "totalRatingsString": "10K+",
+    "promoted": true,
+    "adTrackingId": "cid=13128050~p=0~adgrpid=13128050#ag1~mp=SWIGGY_IN~bl=FOOD~aet=RESTAURANT~aeid=11748~eid=a4e32f92-d08f-4edb-aa12-3c472d2adf03~srvts=1715868375541~collid=45826",
+    "sla": {
+      "deliveryTime": 26,
+      "lastMileTravel": 1.7,
+      "serviceability": "SERVICEABLE",
+      "slaString": "25-30 mins",
+      "lastMileTravelString": "1.7 km",
+      "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+      "nextCloseTime": "2024-05-17 04:00:00",
+      "opened": true
+    },
+    "badges": {
+      "textExtendedBadges": [
+        {
+          "iconId": "guiltfree/GF_Logo_android_3x",
+          "shortDescription": "options available",
+          "fontColor": "#7E808C"
+        }
+      ]
+    },
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+      "entityBadges": {
+        "imageBased": {},
+        "textExtendedBadges": {
+          "badgeObject": [
+            {
+              "attributes": {
+                "shortDescription": "options available",
+                "fontColor": "#7E808C",
+                "iconId": "guiltfree/GF_Logo_android_3x",
+                "description": ""
+              }
+            }
+          ]
+        },
+        "textBased": {}
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "₹150 OFF",
+      "subHeader": "ABOVE ₹299",
+      "discountTag": "FLAT DEAL"
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "lottie": {},
+        "video": {}
+      }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {},
+    "externalRatings": {
+      "aggregatedRating": {
+        "rating": "--"
+      }
+    },
+    "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {},
+  "cta": {
+    "link": "swiggy://menu?restaurant_id=11748",
+    "text": "RESTAURANT_MENU",
+    "type": "DEEPLINK"
+  }
+}

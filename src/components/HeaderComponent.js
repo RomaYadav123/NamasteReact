@@ -60,7 +60,7 @@ const HeaderComponent = () => {
           <button
             className="px-4"
             onClick={() => {
-              btnName === "logout" ? setBtnName("logout") : setBtnName("login");
+              setBtnName(btnName === "logout" ? "login" : "logout");
             }}
           >
             {btnName}
