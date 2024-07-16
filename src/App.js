@@ -17,7 +17,7 @@ import Cart from "./components/Cart";
 // import yummyFoodImg from "./public/YummFood";
 // import streetFoodImg from "./Images/StreetFood";
 
-const RestrauantCard = (props) => {
+const TheRestrauantCard = (props) => {
   // destructuring happening here -->//
   const { resData } = props;
   const { name, cuisines, avgRating } = resData?.info;

@@ -1,5 +1,6 @@
 import restrauList from "../utils/mockData";
-import RestrauantCard, { withPromotionLabel } from "./RestrauantCard";
+import RestrauantCard from "./RestrauantCard";
+import withPromotionLabel from "./withPromotionLabel";
 import Button from "react-bootstrap/Button";
 import Shimmer from "./Shimmer";
 import { useState, useEffect, useContext } from "react";
